@@ -2,9 +2,10 @@ package com.nikasov.animationplayground.ui.plus_anim.activity
 
 import android.app.ActivityOptions
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Pair
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.nikasov.animationplayground.R
 import com.nikasov.animationplayground.databinding.ActivityPlusStartBinding
@@ -26,14 +27,11 @@ class PlusStartActivity : AppCompatActivity() {
             override fun onItemSelected(position: Int, item: String, view: View) {
                 val intent = Intent(applicationContext, PlusEndActivity::class.java)
                 intent.putExtra("image", item)
-
                 val options =
                     ActivityOptions.makeSceneTransitionAnimation(
                         this@PlusStartActivity,
-                        view,
-                        "image_transition"
+                        Pair.create(view, "image_transition")
                     )
-
                 intent.apply {
                     startActivity(this, options.toBundle())
                 }

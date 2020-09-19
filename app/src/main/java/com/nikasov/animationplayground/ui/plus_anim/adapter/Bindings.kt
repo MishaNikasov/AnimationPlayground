@@ -14,7 +14,8 @@ fun ImageView.glide(image: String){
     Glide
         .with(this.context)
         .load(image)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .useAnimationPool(true)
+        .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
         .error(ContextCompat.getDrawable(this.context, R.drawable.ic_error))
         .placeholder(android.R.color.white)
         .centerCrop()
